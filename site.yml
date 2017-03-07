@@ -2,7 +2,7 @@
 
   roles:
     - system
-    - pg
+    - mysql
     - ruby
     - redmine
     - apache

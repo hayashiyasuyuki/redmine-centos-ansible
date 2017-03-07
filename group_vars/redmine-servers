@@ -17,7 +17,10 @@ redmine_dir_group: apache
 redmine_font_path: /usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf
 
 # pg_hba.confのパス
-pg_hba_conf_path: /var/lib/pgsql/data/pg_hba.conf
+#pg_hba_conf_path: /var/lib/pgsql/data/pg_hba.conf
+
+# my.cnfのパス
+my_cnf_path: /etc/my.cnf
 
 # ダウンロードするRubyのソースコード
 ruby_url_dir: https://cache.ruby-lang.org/pub/ruby/2.3
@@ -27,3 +30,5 @@ ruby_archive_name: "{{ ruby_archive_version }}.{{ ruby_archive_ext }}"
 
 ruby_file_name: /usr/local/bin/ruby
 work_dir: /tmp/redmine-setup
+
+db_passwd_redmine: keisredmine
