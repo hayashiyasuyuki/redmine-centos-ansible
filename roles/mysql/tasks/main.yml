@@ -11,11 +11,6 @@
     state=restarted
     enabled=yes
 
-- name: セキュリティ設定
-  become: yes
-  shell:
-    mysql_secure_installation
-
 - name: MySQLユーザー作成
   become: yes
   become_user: mysql
