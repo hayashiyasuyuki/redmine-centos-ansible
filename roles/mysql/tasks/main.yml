@@ -14,14 +14,6 @@
     state=restarted
     enabled=yes
 
-- name: root ユーザのパスワード変更
-  mysql_user:
-    name=root
-    host={{ item }}
-    password={{ db_passwd_redmine }}
-  with_items:
-    - localhost
-
 - name: MySQLユーザー作成
   become: yes
   become_user: mysql
