@@ -11,14 +11,6 @@
     state=restarted
     enabled=yes
 
-- name: root ユーザのパスワード変更
-  mysql_user:
-    name='root'
-    host={{ item }}
-    password={{ db_passwd_redmine }}
-  with_items:
-    - localhost
-
 - name: セキュリティ設定
   become: yes
   shell:
@@ -42,3 +34,11 @@
     lc_collate='ja_JP.UTF-8'
     lc_ctype='ja_JP.UTF-8'
     template='template0'
+
+- name: root ユーザのパスワード変更
+  mysql_user:
+    name=root
+    host={{ item }}
+    password={{ db_passwd_redmine }}
+  with_items:
+    - localhost
