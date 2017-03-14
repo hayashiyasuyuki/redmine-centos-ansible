@@ -1,3 +1,16 @@
+- name: root ユーザのパスワード変更
+  mysql_user:
+    name: "root"
+    host: "{{ item }}"
+    password: "{{ db_passwd_redmine }}"
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost.localdomain
+    - localhost
+    - keis-redmine.prod.local
+  when: init_flag.rc == 1
+
 - name: mysql.cnfの配置
   become: yes
   copy:
@@ -18,15 +31,15 @@
 
 - name: MySQLユーザー作成
   become: yes
-  become_user: admin
+  become_user: mysql
   become_method: su
   mysql_user:
-    name=admin
+    name=mysql
     password={{ db_passwd_redmine }}
 
 - name: MySQL データベース作成
   become: yes
-  become_user: admin
+  become_user: mysql
   become_method: su
   mysql_db:
     name=redmine
