@@ -1,2 +1,7 @@
 [redmine-servers]
-192.168.20.4
+keis-redmine.prod.jp.local
+
+[redmine-servers:vars]
+
+ansible_ssh_user=hayashi
+ansible_ssh_private_key_file=/home/hayashi/.ssh/id_rsa

@@ -47,10 +47,33 @@
 #  become: yes
 #  yum:
 #    name='postgresql-server,postgresql-devel,python-psycopg2'
-- name: Mysqlのインストール
-  become: yes
+- name: Mysql5.6 レポジトリの登録
   yum:
-    name='mysql-server mysql-devel'
+    name: http://dev.mysql.com/get/mysql57-community-release-el6-7.noarch.rpm
+    state: present
+
+- name: mysqld のインストール
+  yum:
+    name: "{{ item }}"
+    enablerepo: mysql56-community
+    disablerepo: mysql57-community
+    state: present
+  with_items:
+    - mysql-community-server
+    - mysql-community-client
+    - mysql-community-common
+    - mysql-community-libs
+    - mysql-community-libs-compat
+
+- name: Ansible 用 mysql モジュールで必要なパッケージのインストール
+  yum:
+    name: MySQL-python
+    state: present
+
+- name: 初期設定確認(mysqladmin ping で確認)
+  shell: "mysqladmin --defaults-file={{ mysqld_5_6.defaults_file}} ping | grep alive"
+  ignore_errors: true
+  register: init_flag
 
 - name: Apacheとヘッダファイルのインストール
   become: yes
