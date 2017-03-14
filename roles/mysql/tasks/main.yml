@@ -1,15 +1,26 @@
 - name: mysql.cnfの配置
   become: yes
-  copy:
-    src=my.cnf
+  template:
+    src=.my.cnf.template
     dest={{ my_cnf_path }}
+    owner: root
+    group: root
+    mode: 0600
 
-- name: MySQLの初期設定
+- name: MySQLの再起動
   become: yes
   service:
     name=mysqld
     state=restarted
     enabled=yes
+
+- name: root ユーザのパスワード変更
+  mysql_user:
+    name=root
+    host={{ item }}
+    password={{ db_passwd_redmine }}
+  with_items:
+    - localhost
 
 - name: MySQLユーザー作成
   become: yes
@@ -29,11 +40,3 @@
     lc_collate='ja_JP.UTF-8'
     lc_ctype='ja_JP.UTF-8'
     template='template0'
-
-- name: root ユーザのパスワード変更
-  mysql_user:
-    name=root
-    host={{ item }}
-    password={{ db_passwd_redmine }}
-  with_items:
-    - localhost
