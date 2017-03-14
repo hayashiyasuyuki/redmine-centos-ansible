@@ -2,7 +2,7 @@
   become: yes
   copy:
     src=my.cnf
-    dest={{ work_dir }}
+    dest={{ my_cnf_path }}
 
 - name: root ユーザのパスワード変更
   mysql_user:
