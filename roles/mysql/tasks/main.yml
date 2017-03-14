@@ -17,7 +17,7 @@
     host: "{{ item }}"
     password: "{{ db_passwd_redmine }}"
   with_items:
-    - keis-redmine.prod.local
+    - localhost
 
 - name: セキュリティ設定
   become: yes
