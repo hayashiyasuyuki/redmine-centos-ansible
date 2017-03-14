@@ -3,9 +3,9 @@
   template:
     src=.my.cnf.template
     dest={{ my_cnf_path }}
-    owner: root
-    group: root
-    mode: 0600
+    owner=root
+    group=root
+    mode=0600
 
 - name: MySQLの再起動
   become: yes
