@@ -4,6 +4,13 @@
     src=my.cnf
     dest={{ my_cnf_path }}
 
+- name: MySQLの初期設定
+  become: yes
+  service:
+    name=mysqld
+    state=restarted
+    enabled=yes
+
 - name: mysql ユーザのパスワード変更
   mysql_user:
     name: "root"
@@ -11,13 +18,6 @@
     password: "{{ db_passwd_redmine }}"
   with_items:
     - keis-redmine.prod.local
-
-- name: MySQLの初期設定
-  become: yes
-  service:
-    name=mysqld
-    state=restarted
-    enabled=yes
 
 - name: セキュリティ設定
   become: yes
