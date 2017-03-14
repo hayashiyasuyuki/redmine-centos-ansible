@@ -14,21 +14,10 @@
     state=restarted
     enabled=yes
 
-- name: MySQLユーザー作成
-  become: yes
-  become_user: mysql
-  become_method: su
-  mysql_user:
-    name=mysql
-    password={{ db_passwd_redmine }}
-
 - name: MySQL データベース作成
   become: yes
-  become_user: mysql
-  become_method: su
   mysql_db:
     name=redmine
     encoding='UTF-8'
     lc_collate='ja_JP.UTF-8'
     lc_ctype='ja_JP.UTF-8'
-    template='template0'
