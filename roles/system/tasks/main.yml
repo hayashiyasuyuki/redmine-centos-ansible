@@ -66,6 +66,7 @@
     - mysql-community-common
     - mysql-community-libs
     - mysql-community-libs-compat
+    - mysql-community-devel
 
 - name: Ansible 用 mysql モジュールで必要なパッケージのインストール
   become: yes
