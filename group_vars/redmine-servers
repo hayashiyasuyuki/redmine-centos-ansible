@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------
 # データベースの redmine ユーザーのパスワード (変更推奨)
-db_passwd_redmine: Must_be_changed!
+db_passwd_redmine: keisredmine
 # ----------------------------------------------------------------------
 
 # Redmineのチェックアウト元URL
@@ -30,5 +30,3 @@ ruby_archive_name: "{{ ruby_archive_version }}.{{ ruby_archive_ext }}"
 
 ruby_file_name: /usr/local/bin/ruby
 work_dir: /tmp/redmine-setup
-
-db_passwd_redmine: keisredmine

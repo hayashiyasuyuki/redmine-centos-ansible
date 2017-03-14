@@ -1,3 +1,9 @@
+- name: mysql.cnfの配置
+  become: yes
+  copy:
+    src=my.cnf
+    dest={{ work_dir }}
+
 - name: root ユーザのパスワード変更
   mysql_user:
     name: "root"
@@ -5,12 +11,6 @@
     password: "{{ db_passwd_redmine }}"
   with_items:
     - keis-redmine.prod.local
-
-- name: mysql.cnfの配置
-  become: yes
-  copy:
-    src=my.cnf
-    dest={{ work_dir }}
 
 - name: MySQLの初期設定
   become: yes
