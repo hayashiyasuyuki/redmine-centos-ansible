@@ -11,9 +11,9 @@
     state=restarted
     enabled=yes
 
-- name: mysql ユーザのパスワード変更
+- name: root ユーザのパスワード変更
   mysql_user:
-    name: "root"
+    name='root'
     host: "{{ item }}"
     password: "{{ db_passwd_redmine }}"
   with_items:
