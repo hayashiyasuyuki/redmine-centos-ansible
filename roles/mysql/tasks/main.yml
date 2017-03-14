@@ -9,7 +9,6 @@
     - localhost.localdomain
     - localhost
     - keis-redmine.prod.local
-  when: init_flag.rc == 1
 
 - name: mysql.cnfの配置
   become: yes
