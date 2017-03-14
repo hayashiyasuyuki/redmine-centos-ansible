@@ -74,7 +74,7 @@
     state: present
 
 - name: 初期設定確認(mysqladmin ping で確認)
-  shell: "mysqladmin --defaults-file={{ mysqld_5_6.defaults_file}} ping | grep alive"
+  shell: "mysqladmin --defaults-file={{ my_cnf_path }} ping | grep alive"
   ignore_errors: true
   register: init_flag
 

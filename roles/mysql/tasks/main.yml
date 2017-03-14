@@ -4,10 +4,6 @@
     host: "{{ item }}"
     password: "{{ db_passwd_redmine }}"
   with_items:
-    - 127.0.0.1
-    - ::1
-    - localhost.localdomain
-    - localhost
     - keis-redmine.prod.local
 
 - name: mysql.cnfの配置
@@ -20,7 +16,7 @@
   become: yes
   service:
     name=mysqld
-    state=started
+    state=restarted
     enabled=yes
 
 - name: セキュリティ設定
