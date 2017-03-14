@@ -8,7 +8,7 @@
   become: yes
   service:
     name=mysqld
-    state=start
+    state=started
     enabled=yes
 
 - name: セキュリティ設定
